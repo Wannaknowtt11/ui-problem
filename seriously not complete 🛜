@@ -86,7 +86,7 @@ local function GetTeamsString()
     end;
 
     table.sort(TeamList, function(str1, str2) return str1 < str2 end);
-
+    
     return TeamList;
 end;
 
@@ -461,8 +461,8 @@ do
             Name = 'Color';
             BackgroundColor3 = Color3.new(1, 1, 1);
             BorderColor3 = Color3.new(0, 0, 0);
-            Position = UDim2.fromOffset(DisplayFrame.AbsolutePositionSizeDisplayFrame.AbsolutePosition.Y + 18),
-            Size = UDim2.fromOffset(115, Info.Transparency and 136 or 126);
+            Position = UDim2.fromOffset(DisplayFrame.AbsolutePosition.X, DisplayFrame.AbsolutePosition.Y + 18),
+            Size = UDim2.fromOffset(230, Info.Transparency and 271 or 253);
             Visible = false;
             ZIndex = 15;
             Parent = ScreenGui,
@@ -476,7 +476,7 @@ do
             BackgroundColor3 = Library.BackgroundColor;
             BorderColor3 = Library.OutlineColor;
             BorderMode = Enum.BorderMode.Inset;
-            Size = UDim2.new(0.5, 0, 0.5, 0);
+            Size = UDim2.new(1, 0, 1, 0);
             ZIndex = 16;
             Parent = PickerFrameOuter;
         });
@@ -615,7 +615,7 @@ do
         });
 
         local TransparencyBoxOuter, TransparencyBoxInner, TransparencyCursor;
-
+        
         if Info.Transparency then 
             TransparencyBoxOuter = Library:Create('Frame', {
                 BorderColor3 = Color3.new(0, 0, 0);
@@ -2599,7 +2599,7 @@ do
         local Depbox = {
             Dependencies = {};
         };
-
+        
         local Groupbox = self;
         local Container = Groupbox.Container;
 
@@ -3047,7 +3047,7 @@ function Library:CreateWindow(...)
         ZIndex = 2;
         Parent = MainSectionInner;
     });
-
+    
 
     Library:AddToRegistry(TabContainer, {
         BackgroundColor3 = 'MainColor';
