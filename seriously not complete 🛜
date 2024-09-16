@@ -190,17 +190,14 @@ function Library:MakeDraggable(Instance, Cutoff)
 end;
 
 function Library:AddToolTip(InfoStr, HoverInstance)
-            local X, Y = Library:GetTextBounds(InfoStr, Library.Font, 14);
-            local Tooltip = Library:Create('Frame', {
-                BackgroundColor3 = Library.MainColor,
-                BorderColor3 = Library.OutlineColor,
+    local X, Y = Library:GetTextBounds(InfoStr, Library.Font, 14);
+    local Tooltip = Library:Create('Frame', {
+        BackgroundColor3 = Library.MainColor,
+        BorderColor3 = Library.OutlineColor,
 
-                -- ปรับขนาดแบบผสม scale และ offset
-                Size = UDim2.new(0, X + 5, 0, Y + 4),  -- ใช้ offset สำหรับขนาดคงที่จาก X และ Y
-                ZIndex = 100,
-                Parent = Library.ScreenGui,
-            })
-
+        Size = UDim2.fromOffset(X + 5, Y + 4),
+        ZIndex = 100,
+        Parent = Library.ScreenGui,
 
         Visible = false,
     })
@@ -2615,7 +2612,7 @@ do
 
         local Frame = Library:Create('Frame', {
             BackgroundTransparency = 1;
-            Size = UDim2.new(1, 0, 1, 0);
+            Size = UDim2.new(0.8, 0, 0.8, 0);
             Visible = true;
             Parent = Holder;
         });
