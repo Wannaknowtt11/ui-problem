@@ -86,7 +86,7 @@ local function GetTeamsString()
     end;
 
     table.sort(TeamList, function(str1, str2) return str1 < str2 end);
-    
+
     return TeamList;
 end;
 
@@ -190,14 +190,17 @@ function Library:MakeDraggable(Instance, Cutoff)
 end;
 
 function Library:AddToolTip(InfoStr, HoverInstance)
-    local X, Y = Library:GetTextBounds(InfoStr, Library.Font, 14);
-    local Tooltip = Library:Create('Frame', {
-        BackgroundColor3 = Library.MainColor,
-        BorderColor3 = Library.OutlineColor,
+            local X, Y = Library:GetTextBounds(InfoStr, Library.Font, 14);
+            local Tooltip = Library:Create('Frame', {
+                BackgroundColor3 = Library.MainColor,
+                BorderColor3 = Library.OutlineColor,
 
-        Size = UDim2.fromOffset(X + 5, Y + 4),
-        ZIndex = 100,
-        Parent = Library.ScreenGui,
+                -- ปรับขนาดแบบผสม scale และ offset
+                Size = UDim2.new(0, X + 5, 0, Y + 4),  -- ใช้ offset สำหรับขนาดคงที่จาก X และ Y
+                ZIndex = 100,
+                Parent = Library.ScreenGui,
+            })
+
 
         Visible = false,
     })
@@ -615,7 +618,7 @@ do
         });
 
         local TransparencyBoxOuter, TransparencyBoxInner, TransparencyCursor;
-        
+
         if Info.Transparency then 
             TransparencyBoxOuter = Library:Create('Frame', {
                 BorderColor3 = Color3.new(0, 0, 0);
@@ -2599,7 +2602,7 @@ do
         local Depbox = {
             Dependencies = {};
         };
-        
+
         local Groupbox = self;
         local Container = Groupbox.Container;
 
@@ -3047,7 +3050,7 @@ function Library:CreateWindow(...)
         ZIndex = 2;
         Parent = MainSectionInner;
     });
-    
+
 
     Library:AddToRegistry(TabContainer, {
         BackgroundColor3 = 'MainColor';
