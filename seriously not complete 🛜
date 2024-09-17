@@ -86,7 +86,7 @@ local function GetTeamsString()
     end;
 
     table.sort(TeamList, function(str1, str2) return str1 < str2 end);
-
+    
     return TeamList;
 end;
 
@@ -190,26 +190,17 @@ function Library:MakeDraggable(Instance, Cutoff)
 end;
 
 function Library:AddToolTip(InfoStr, HoverInstance)
-local X, Y = Library:GetTextBounds(InfoStr, Library.Font, 14);
-local screenWidth = Library.ScreenGui.AbsoluteSize.X
-local screenHeight = Library.ScreenGui.AbsoluteSize.Y
+    local X, Y = Library:GetTextBounds(InfoStr, Library.Font, 14);
+    local Tooltip = Library:Create('Frame', {
+        BackgroundColor3 = Library.MainColor,
+        BorderColor3 = Library.OutlineColor,
 
--- แปลง X และ Y เป็นสัดส่วนของหน้าจอ
-local ScaleX = X / screenWidth
-local ScaleY = Y / screenHeight
+        Size = UDim2.fromOffset(X + 5, Y + 4),
+        ZIndex = 100,
+        Parent = Library.ScreenGui,
 
-local Tooltip = Library:Create('Frame', {
-    BackgroundColor3 = Library.MainColor,
-    BorderColor3 = Library.OutlineColor,
-
-    -- ใช้ ScaleX และ ScaleY ที่ได้จากการคำนวณขนาดหน้าจอ
-    Size = UDim2.new(ScaleX, 0, ScaleY, 0),  
-    ZIndex = 100,
-    Parent = Library.ScreenGui,
-
-    Visible = false,
-})
-
+        Visible = false,
+    })
 
     local Label = Library:CreateLabel({
         Position = UDim2.fromOffset(3, 1),
@@ -624,7 +615,7 @@ do
         });
 
         local TransparencyBoxOuter, TransparencyBoxInner, TransparencyCursor;
-
+        
         if Info.Transparency then 
             TransparencyBoxOuter = Library:Create('Frame', {
                 BorderColor3 = Color3.new(0, 0, 0);
@@ -2608,7 +2599,7 @@ do
         local Depbox = {
             Dependencies = {};
         };
-
+        
         local Groupbox = self;
         local Container = Groupbox.Container;
 
@@ -3056,7 +3047,7 @@ function Library:CreateWindow(...)
         ZIndex = 2;
         Parent = MainSectionInner;
     });
-
+    
 
     Library:AddToRegistry(TabContainer, {
         BackgroundColor3 = 'MainColor';
